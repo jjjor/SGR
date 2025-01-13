@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Fonts and Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon.png' %}" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/todayMenu.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/request.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/allRequest.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/formToCreateMeal.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/select-dish.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/myRequests.css' %}" />
+
+    <title>Gerenciamento de Refeições</title>
+</head>
+
+<body class="body">
+    <!-- Header Section -->
+    <header class="header" id="header">
+        <a href="/">
+            <img src="{% static 'img/logo.png' %}" alt="logo do gerenciamento de refeição" id="logo" />
+        </a>
+        <nav class="navBar">
+            {% if not user.coordenator and not user.chef %}
+                <a href="">Cardápio do dia</a>
+                <a href="">Solicitar refeição</a>
+                <a href="">Minhas solicitações</a>
+            {% endif %}
+            {% if user.coordenator %}
+                <a href="">Analisar solicitações</a>
+            {% endif %}
+            {% if user.chef %}
+                <a href="">Cadastrar refeições</a>
+                <a href="">Escolher prato do dia</a>
+            {% endif %}
+            {% if user.is_anonymous %}
+                <a class="btnLogin" href="">Login</a>
+            {% endif %}
+            {% if not user.is_anonymous %}
+                <p>Olá, {{ user.first_name }}</p>
+                <a href=""><img src="{% static 'img/logout.svg' %}" alt="Logout" /></a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <!-- Mobile Header -->
+    <div class="fade" onclick="mostrarMenu()"></div>
+    <div class="header-mobile">
+        <a href="/">
+            <img src="{% static "img/logo.png" %}" alt="logo do gerenciamento de refeição" width="100" height="80">
+        </a>
+        <img src="{% static 'img/burger-menu.svg' %}" width="32" height="32" alt="Menu" onclick="mostrarMenu()">
+        <nav class="navBar-mobile">
+            {% if not user.coordenator and not user.chef %}
+                <a href="">Cardápio do dia</a>
+                <a href="">Solicitar refeição</a>
+                <a href="">Minhas solicitações</a>
+            {% endif %}
+            {% if user.coordenator %}
+                <a href="">Analisar solicitações</a>
+            {% endif %}
+            {% if user.chef %}
+                <a href="">Cadastrar refeições</a>
+                <a href="">Escolher prato do dia</a>
+            {% endif %}
+            {% if user.is_anonymous %}
+                <a class="btnLogin" href="">Login</a>
+            {% endif %}
+            {% if not user.is_anonymous %}
+                <a href="#">Olá, {{ user.first_name }}</a>
+                <a href=""><img src="{% static 'img/logout.svg' %}" alt="Logout" style="width: 28px"></a>
+            {% endif %}
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    {% block content %}
+    <div class="mainblock" name="mainblock">
+        <img src="{% static 'img/imgHome.png' %}" alt="imgHome" style="width: 350px" class="imgHome">
+        Sistema de Gerenciamento de Refeições
+        <p>
+            Seja bem-vindo(a) ao Sistema de Gerenciamento de Refeições do IFRN.
+        </p>
+
+        <div>
+            Principais recursos: <br>
+            <p>
+            - Cardápio diário: Confira o cardápio atualizado regularmente. <br>
+            - Solicitações online: Faça sua solicitação de forma fácil e segura. <br> 
+            - Notificações em tempo real: Fique de olho para receber os status da sua solicitação. 
+
+            
+        </p>
+        <img src="{% static 'img/ifrn-logo.png' %}" class="ifrnlogo">
+        
+        </div>
+
+    </div>
+    {% endblock %}
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="OptionsFooter">
+            <a href="#header">Voltar ao topo</a>
+            <div class="ContentImg">
+                <p>Sistema de gerenciamento de refeições do IFRN 2023 &copy;</p>
+            </div>
+        </div>
+        <div class="OptionsFooter">
+            <a href="https://portal.ifrn.edu.br/">Portal do IFRN</a>
+            <a href="https://suap.ifrn.edu.br/">SUAP</a>
+            <div class="ContentImg">
+                <a href="https://www.instagram.com/ifrnpaudosferros/"><img src="{% static 'img/instagram-logo.svg' %}" alt="Instagram"></a>
+                <a href="https://www.facebook.com/ifrnpaudosferros"><img src="{% static 'img/facebook-logo.svg' %}" alt="Facebook"></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{% static 'js/mobileMenu.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,299 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body {
+    background-color: white;
+    color: #121214;
+    font-family: "Roboto", sans-serif;
+}
+
+.mainblock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: 10%;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.imgHome {
+    margin-bottom: 20px;
+    margin-top: 40px;
+}
+
+.mainblock p {
+    display: inline-block;
+    color: #00875F;
+    font-size: 19px;
+    align-items: center;
+}
+
+.ifrnlogo {
+    display: flex;
+    float: right;
+    width: 100px;
+    vertical-align: middle;
+    margin-left: 20px;
+    
+}
+
+.mainblock div {
+    background-color: #e1e1e6;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 10%;
+}
+
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.body {
+    flex: 1;
+}
+
+.footer {
+    margin-top: auto;
+}
+
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 64px;
+    background-color: white;
+}
+
+.header > a > img {
+    width: 100px;
+    height: 90px;
+}
+
+.navBar {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.navBar > a, 
+.navBar > p {
+    text-decoration: none;
+    font-size: 16px;
+    color: #121214;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.navBar .btnLogin {
+    padding: 1rem 2rem;
+    color: white;
+}
+
+.navBar > a:hover {
+    opacity: 80%;
+}
+
+.btnLogin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #00875f;
+    font-weight: bold;
+    color: white;
+    padding: 8px;
+    font-size: 16px;
+    border: 0;
+    border-radius: 4px;
+    width: 64px;
+    height: 24px;
+}
+
+.btnLogin:hover {
+    background: #00b37e;
+    cursor: pointer;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    font-size: 16px;
+    background-color: white;
+    color: black;
+}
+
+.OptionsFooter {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 16px 0;
+    text-align: center;
+}
+
+.OptionsFooter > a {
+    text-decoration: none;
+    color: #121214;
+}
+
+.OptionsFooter > a:hover {
+    color: #00875f;
+}
+
+.ContentImg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.ContentImg > img {
+    width: 16px;
+    height: 16px;
+}
+
+.header-mobile {
+    display: none;
+}
+
+@media (max-width: 1280px) {
+    .header > a > img {
+        width: 80px;
+        height: 64px;
+    }
+
+    .btnLogin {
+        padding: 8px;
+        font-size: 12px;
+        width: 32px;
+        height: 16px;
+    }
+
+    .OptionsFooter > a {
+        font-size: 12px;
+    }
+
+    .ContentImg > p {
+        font-size: 12px;
+    }
+
+    .ContentImg > img {
+        width: 12px;
+        height: 12px;
+    }
+
+    .ContentImg > a > img {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navBar {
+        gap: 1rem;
+    }
+
+    .navBar > a {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .btnLogin {
+        padding: 1rem 2rem;
+    }
+
+    .header {
+        justify-content: space-evenly;
+        padding: 16px;
+    }
+
+    .OptionsFooter {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .OptionsFooter > a {
+        font-size: 1rem;
+    }
+
+    .ContentImg > a > img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .ContentImg > p {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    #header {
+        display: none;
+    }
+
+    .header-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1rem 2rem;
+        background-color: #1f1f1f;
+    }
+
+    .header-mobile a img {
+        width: 100px;
+        height: 80px;
+    }
+
+    .navBar-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        position: absolute;
+        height: 100%;
+        top: 0;
+        right: 0;
+        padding: 1rem;
+        background: #323238;
+        visibility: hidden;
+    }
+
+    .navBar-mobile a {
+        font-size: 1rem;
+        text-align: center;
+        color: #e1e1e6;
+        font-weight: bold;
+        text-decoration: none;
+        padding: 1rem;
+        width: 100%;
+    }
+
+    .navBar-mobile .btnLogin {
+        padding: 1.3rem 2rem;
+    }
+
+    .fade {
+        background-color: #121214d4;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        visibility: hidden;
+    }
+
+    .active-menu-mobile {
+        visibility: visible;
+    }
+
+    .footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+}
