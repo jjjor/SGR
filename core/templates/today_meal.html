@@ -12,44 +12,98 @@
     <div class="registered-dish">
       <h2>Almoços cadastrados</h2>
       <div class="registered-dish-container">
-        {% for almoco in almocos %}
+        
         <div class="card-dish">
-          <img src="{{almoco.image.url}}" alt="" />
+          <img src="{% static 'img/almoco.png' %}" alt="" />
           <div class="description">
             <p class="description-title">Descrição:</p>
-            <p class="description-text">{{almoco.description}}</p>
+            <p class="description-text">Arroz, feijão e carne</p>
           </div>
+          
           <div class="selectDishToDay">
             <a
-              href="{% url 'select-snack' almoco.id %}"
+              href=""
               class="btn-select-dish"
               title="Seleciona a refeição do dia"
               >Selecionar</a
             >
-            {% if almoco.snack_to_day %}
+            
             <a
               title="Retira da refeição o titulo de refeição do dia"
-              href="{% url 'remove-snack' almoco.id %}"
+              href=""
               ><img
                 src="{% static 'img/x-circle.svg' %}"
                 alt=""
                 id="imageRemove"
             /></a>
-            {% endif %}
+            
           </div>
         </div>
-        {% endfor %}
+        <div class="card-dish">
+          <img src="{% static 'img/almoco.png' %}" alt="" />
+          <div class="description">
+            <p class="description-title">Descrição:</p>
+            <p class="description-text">Arroz, feijão e carne</p>
+          </div>
+          
+          <div class="selectDishToDay">
+            <a
+              href=""
+              class="btn-select-dish"
+              title="Seleciona a refeição do dia"
+              >Selecionar</a
+            >
+            
+            <a
+              title="Retira da refeição o titulo de refeição do dia"
+              href=""
+              ><img
+                src="{% static 'img/x-circle.svg' %}"
+                alt=""
+                id="imageRemove"
+            /></a>
+            
+          </div>
+        </div>
+        <div class="card-dish">
+          <img src="{% static 'img/almoco.png' %}" alt="" />
+          <div class="description">
+            <p class="description-title">Descrição:</p>
+            <p class="description-text">Arroz, feijão e carne</p>
+          </div>
+          
+          <div class="selectDishToDay">
+            <a
+              href=""
+              class="btn-select-dish"
+              title="Seleciona a refeição do dia"
+              >Selecionar</a
+            >
+            
+            <a
+              title="Retira da refeição o titulo de refeição do dia"
+              href=""
+              ><img
+                src="{% static 'img/x-circle.svg' %}"
+                alt=""
+                id="imageRemove"
+            /></a>
+            
+          </div>
+        </div>
+        
+        
       </div>
     </div>
     <div class="registered-dish">
       <h2>Jantas cadastradas</h2>
       <div class="registered-dish-container">
-        {% for janta in jantares %}
+        
         <div class="card-dish">
-          <img src="{{janta.image.url}}" alt="" />
+          <img src="{% static 'img/janta.png' %}" alt="" />
           <div class="description">
             <p class="description-title">Descrição:</p>
-            <p class="description-text">{{janta.description}}</p>
+            <p class="description-text">Macarronada</p>
           </div>
           <div class="selectDishToDay">
             <a
@@ -58,7 +112,7 @@
               title="Seleciona a refeição do dia"
               >Selecionar</a
             >
-            {% if janta.snack_to_day %}
+            
             <a
               title="Retira da refeição o titulo de refeição do dia"
               href=""
@@ -67,10 +121,60 @@
                 alt=""
                 id="imageRemove"
             /></a>
-            {% endif %}
+            
           </div>
         </div>
-        {% endfor %}
+        <div class="card-dish">
+          <img src="{% static 'img/janta.png' %}" alt="" />
+          <div class="description">
+            <p class="description-title">Descrição:</p>
+            <p class="description-text">Macarronada</p>
+          </div>
+          <div class="selectDishToDay">
+            <a
+              href=""
+              class="btn-select-dish"
+              title="Seleciona a refeição do dia"
+              >Selecionar</a
+            >
+            
+            <a
+              title="Retira da refeição o titulo de refeição do dia"
+              href=""
+              ><img
+                src="{% static 'img/x-circle.svg' %}"
+                alt=""
+                id="imageRemove"
+            /></a>
+            
+          </div>
+        </div>
+        <div class="card-dish">
+          <img src="{% static 'img/janta.png' %}" alt="" />
+          <div class="description">
+            <p class="description-title">Descrição:</p>
+            <p class="description-text">Macarronada</p>
+          </div>
+          <div class="selectDishToDay">
+            <a
+              href=""
+              class="btn-select-dish"
+              title="Seleciona a refeição do dia"
+              >Selecionar</a
+            >
+            
+            <a
+              title="Retira da refeição o titulo de refeição do dia"
+              href=""
+              ><img
+                src="{% static 'img/x-circle.svg' %}"
+                alt=""
+                id="imageRemove"
+            /></a>
+            
+          </div>
+        </div>
+        
       </div>
     </div>
   </div>

@@ -3,21 +3,21 @@
 
 <div class="ContainerMenu">
   <h1>Refeições do dia:</h1>
-  {% if messages %} {% for message in messages %}
+  
   <p style="color: red">{{ message }}</p>
-  {% endfor %} {% endif %}
+  
   <div class="ContainerSnack">
     <div class="ContainerTwoSnacks">
       <div class="snacks">
         <h1>Almoço do dia</h1>
-        {% for almoco_snack in almoco %}
+        
         <div class="ContainerImgSnack">
-          <img src="{{ almoco_snack.image.url }}" alt="almoco" />
+          <img src="{% static 'img/almoco.png' %}" alt="almoco" />
         </div>
         <div class="menuLike">
           <p>Cardápio:</p>
           <span class="like">
-            <a href="{% url 'update-like' almoco_snack.id %}" class="link">
+            <a href="" class="link">
               <img src="{% static 'img/like.png' %}" alt="like" />
               <p>{{ almoco_snack.likes }}</p>
             </a>
@@ -27,23 +27,24 @@
         {% if not user.is_anonymous %}
         <a href="request-snack" id="requestSnack">Solicitar refeição</a>
         {% endif %} {% if user.is_anonymous %}
-        <a href="{% url 'social:begin' 'suap' %}" class="requestSnackc"
+        <a href="" class="requestSnackc"
           >Solicitar refeição</a
         >
-        {% endif %} {% endfor %}
+        {% endif %}
+        
       </div>
     </div>
     <div class="ContainerTwoSnacks">
       <div class="snacks">
         <h1>Jantar do dia</h1>
-        {% for janta_snack in janta %}
+        
         <div class="ContainerImgSnack">
-          <img src="{{ janta_snack.image.url }}" alt="janta" />
+          <img src="{% static 'img/janta.png' %}" alt="janta" />
         </div>
         <div class="menuLike">
           <p>Cardápio:</p>
           <span class="like">
-            <a href="{% url 'update-like' janta_snack.id %}" class="link">
+            <a href="" class="link">
               <img src="{% static 'img/like.png' %}" alt="like" />
               <p>{{ janta_snack.likes }}</p>
             </a>
@@ -53,10 +54,11 @@
         {% if not user.is_anonymous %}
         <a href="request-snack" id="requestSnack">Solicitar refeição</a>
         {% endif %} {% if user.is_anonymous %}
-        <a href="{% url 'social:begin' 'suap' %}" class="requestSnackc"
+        <a href="" class="requestSnackc"
           >Solicitar refeição</a
         >
-        {% endif %} {% endfor %}
+        {% endif %}
+        
       </div>
     </div>
   </div>

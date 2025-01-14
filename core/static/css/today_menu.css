@@ -25,7 +25,7 @@
     justify-content: center;
     width: 400px;
     height: auto;
-    background: #e1e1e6;
+    background: #f1f1f1;
     border-radius: 8px;
     padding: 1rem 0rem;
   }
@@ -38,11 +38,11 @@
     width: 256px;
   }
   .snacks > h1 {
-    font-size: 32px;
-    color: #00875f;
+    font-size: 30px;
+    color: black;
   }
   .snacks > p {
-    color: #a9a9b2;
+    color: white;
     font-size: 20px;
   }
   
@@ -59,7 +59,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #505059;
+    background: #f1f1f1;
     border-radius: 4px;
     width: 256px;
     height: 200px;
@@ -99,7 +99,7 @@
     background: #00875f;
     text-decoration: none;
     text-align: center;
-    color: #e1e1e6;
+    color: white;
     border-radius: 4px;
     font-weight: bold;
   }
@@ -108,7 +108,7 @@
     background: #00875f;
     text-decoration: none;
     text-align: center;
-    color: #e1e1e6;
+    color: white;
     border-radius: 4px;
     font-weight: bold;
   }
