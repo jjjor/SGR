@@ -1,0 +1,120 @@
+.ContainerFormToCreateMeal {
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+    border-radius: 8px;
+    margin: 32px 0;
+    overflow: hidden;
+    height: auto;
+    padding: 2rem 0.5rem;
+  }
+  .ContentFormToCreate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .ContainerFormToCreateMeal h1 {
+    font-size: 48px;
+    color: #00875f;
+    margin: 0;
+  }
+  .ContainerContentFormMeal {
+    display: flex;
+    width: 100%;
+    justify-content: left;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .ContainerContentFormMeal h4 {
+    color: #121214;
+    font-size: 16px;
+  }
+  .formCreateMeal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid #00875f;
+    height: 490px;
+    width: 460px;
+    border-radius: 4px;
+    padding: 32px 64px;
+    gap: 32px;
+  }
+  .formCreateMeal h3 {
+    font-size: 32px;
+    color: #121214;
+  }
+  .formCreateMeal button {
+    width: 256px;
+  
+    background: #00875f;
+    padding: 8px 64px;
+    border: 0;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #121214;
+  }
+  .formCreateMeal button:hover {
+    cursor: pointer;
+    background: #00b37e;
+  }
+  .check {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+  .check input {
+    border-radius: 2px;
+    border: 0;
+    width: 16px;
+  }
+  .check p {
+    font-size: 12px;
+  }
+  .ContainerContentFormMeal textarea {
+    width: 100%;
+    height: 80px;
+  }
+  
+  @media (max-width: 768px) {
+    .ContainerFormToCreateMeal {
+      max-width: 90%;
+      margin: 0 auto;
+    }
+  
+    .ContainerFormToCreateMeal h1 {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  
+    .ContentFormToCreate {
+      max-width: 90%;
+    }
+  
+    .formCreateMeal {
+      width: 100%;
+      padding: 0;
+      text-align: center;
+    }
+  
+    .formCreateMeal h3 {
+      width: 100%;
+      font-size: medium;
+    }
+  
+    .ContainerContentFormMeal {
+      width: 90%;
+    }
+  
+    .formCreateMeal button {
+      padding: 1rem 2rem;
+      width: 90%;
+      text-align: center;
+    }
+  
+  }

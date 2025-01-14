@@ -6,7 +6,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Fonts and Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
@@ -14,47 +13,47 @@
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="theme-color" content="#ffffff" />
 
-    <!-- CSS Links -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/todayMenu.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/today_menu.css' %}" />
     <link rel="stylesheet" href="{% static 'css/request.css' %}" />
     <link rel="stylesheet" href="{% static 'css/allRequest.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/formToCreateMeal.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/select-dish.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/create_meal.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/today_meal.css' %}" />
     <link rel="stylesheet" href="{% static 'css/myRequests.css' %}" />
 
     <title>Gerenciamento de Refeições</title>
 </head>
 
 <body class="body">
-    <!-- Header Section -->
     <header class="header" id="header">
         <a href="/">
             <img src="{% static 'img/logo.png' %}" alt="logo do gerenciamento de refeição" id="logo" />
         </a>
         <nav class="navBar">
-            {% if not user.coordenator and not user.chef %}
-                <a href="">Cardápio do dia</a>
-                <a href="">Solicitar refeição</a>
-                <a href="">Minhas solicitações</a>
-            {% endif %}
-            {% if user.coordenator %}
-                <a href="">Analisar solicitações</a>
-            {% endif %}
-            {% if user.chef %}
-                <a href="">Cadastrar refeições</a>
-                <a href="">Escolher prato do dia</a>
-            {% endif %}
-            {% if user.is_anonymous %}
-                <a class="btnLogin" href="">Login</a>
-            {% endif %}
-            {% if not user.is_anonymous %}
-                <p>Olá, {{ user.first_name }}</p>
+            {% if user.is_authenticated %}
+                {% if not user.is_superuser %}
+                    
+                    <a href="">Cardápio do dia</a>
+                    <a href="">Solicitar refeição</a>
+                    <a href="">Minhas solicitações</a>
+                {% endif %}
+    
+                {% if user.is_superuser %}
+                   
+                <a href="{% url 'create_meal' %}">Cadastrar refeições</a>
+                    <a href="{% url 'today_meal'%}">Escolher prato do dia</a>
+                {% endif %}
+    
+                <p>Olá, {{ user.username }}</p>
                 <a href=""><img src="{% static 'img/logout.svg' %}" alt="Logout" /></a>
+            {% else %}
+            
+                <a href="{% url 'today_menu' %}">Cardápio do dia</a>
+                <a class="btnLogin" href="">Login</a>
             {% endif %}
         </nav>
     </header>
-
+        
     <!-- Mobile Header -->
     <div class="fade" onclick="mostrarMenu()"></div>
     <div class="header-mobile">
@@ -88,7 +87,7 @@
     <!-- Main Content -->
     {% block content %}
     <div class="mainblock" name="mainblock">
-        <img src="{% static 'img/imgHome.png' %}" alt="imgHome" style="width: 350px" class="imgHome">
+        <img src="{% static 'img/woman.png' %}" alt="imgHome" style="width: 350px" class="imgHome">
         Sistema de Gerenciamento de Refeições
         <p>
             Seja bem-vindo(a) ao Sistema de Gerenciamento de Refeições do IFRN.

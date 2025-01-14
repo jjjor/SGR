@@ -22,4 +22,7 @@ from core import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
+    path('create-meal/', views.create_meal, name='create_meal'),
+    path('today_meal/', views.today_meal, name='today_meal'),
+    path('today_menu/', views.today_menu, name='today_menu'),
 ]

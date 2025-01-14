@@ -1,0 +1,165 @@
+.select-dish {
+    padding: 2rem 0;
+  }
+  
+  .select-dish-container {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0 4rem 0;
+    border-radius: 0.5rem;
+    gap: 2rem;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  
+  .registered-dish {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    width: 80%;
+    gap: 28px;
+  }
+  
+  .select-dish-container registered-dish {
+    margin-top: 2rem;
+  }
+  
+  .registered-dish h2 {
+    color: #00875f;
+  }
+  
+  .select-dish-container h1 {
+    color: #00875f;
+    font-size: 3rem;
+    text-align: center;
+    margin: 0;
+  }
+  
+  .registered-dish-container {
+    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card-dish {
+    max-width: 230px;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #323238;
+    border-radius: 0.5rem;
+    gap: 1rem;
+    height: 300px;
+  }
+  
+  .card-dish img {
+    max-width: 130px;
+    width: 60%;
+    height: 92px;
+    border-radius: 0.5em;
+  }
+  
+  #imageRemove {
+    width: 32px;  
+    height: 32px;
+  }
+  #imageRemove:hover {
+    opacity: 80%;
+  }
+  
+  .selectDishToDay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    max-height: 32px;
+  }
+  
+  .description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 90%;
+    padding: 0.5rem;
+  }
+  
+  .description-title {
+    font-weight: bold;
+    width: 100%;
+  }
+  
+  .description-text {
+    color: #a9a9b2;
+    width: 90%;
+    word-wrap: break-word;
+  }
+  
+  .btn-select-dish {
+    background-color: #00875f;
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 0.6rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .btn-select-dish:hover {
+    cursor: pointer;
+    background: #00b37e;
+  }
+  
+  @media (max-width: 768px) {
+    .select-dish-container h1 {
+      max-width: 90%;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+    
+    .registered-dish {
+      max-width: 90%;
+    }
+  
+    .registered-dish h2 {
+      max-width: 90%;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+  
+    .registered-dish-container {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .card-dish {
+      width: 100%;
+      height: auto;
+      gap: 2rem;
+    }
+  
+    .card-dish img {
+      width: 100px;
+      height: 100px;
+    }
+  
+    .description-text {
+      word-wrap: break-word;
+    }
+  
+  }
+  
+  @media (max-width: 375px) {
+    .selectDishToDay {
+      display: flex;
+      flex-direction: column;
+    }
+  }
