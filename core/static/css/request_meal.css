@@ -1,0 +1,202 @@
+/* solicitar almoço */
+.ContainerRequest {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    width: 100%;
+  }
+  
+  .ContainerContent {
+    height: auto;
+    background-color: white;
+    margin: 0 auto;
+    display: flex;
+    padding: 4rem;
+    border-radius: 1rem;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .ContainerTxtRequest {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fcfcfc;
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 0.5rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+
+  .ContainerTxtRequest select {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .ContainerAlign {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    gap: 2rem;
+  }
+  
+  .ContainerTxtRequest h1 {
+    color: #00875f;
+    text-align: center;
+  }
+  
+  .formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .formulario label {
+    color: black;
+    font-size: 1.2rem;
+  }
+  
+  .formulario #dish {
+    height: 2em;
+    width: 150px;
+    border: none;
+    border-radius: 0.2rem;
+    font-size: 1rem;
+    padding: 0.2rem 0.5rem;
+    background-color: #f1f1f1 ;
+    text-transform: uppercase;
+    color: rgba(13, 13, 14, 0.8);
+    font-weight: bold;
+  }
+  
+  .formulario #justification {
+    width: 90%;
+    border: none;
+    font-size: 1rem;
+    border-radius: 0.2rem;
+    background-color: #d9d9d9;
+    color: rgba(80, 80, 89, 0.8);
+    font-weight: bold;
+  }
+  
+  #request-button {
+    margin-top: 1.5rem;
+    color: #fff;
+    padding: 0.5rem;
+    background-color: #00875f;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 90%;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+  
+  #request-button:hover {
+    cursor: pointer;
+    background-color: #00a372;
+  }
+  
+  .request-snack {
+    color: #00875f;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 2.5rem;
+  }
+  
+  .request-snack:hover {
+    color: #fff;
+    transition: 0.6s;
+  }
+  
+  @media (max-width: 850px) {
+    .ContainerAlign img {
+      display: none;
+    }
+  
+    .ContainerRequest {
+      max-width: 90%;
+      margin: 0 auto;
+      padding: 0;
+    }
+  
+    .ContainerContent {
+      padding: 2rem 1rem;
+    }
+  
+    .ContainerTxtRequest h1 {
+      font-size: 1.5rem;
+    }
+  
+    .ContainerAlign {
+      max-width: 90%;
+    }
+  
+    .formulario {
+      width: 100%;
+    }
+  
+    .formulario label {
+      font-size: 1rem;
+    }
+  
+    .ContainerTxtRequest {
+      gap: 1rem;
+    }
+  
+  }
+  
+  @media (max-width: 768px) {
+    .ContainerAlign {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .ContainerAlign img {
+      width: 70%;
+      height: 50vh;
+    }
+  
+  
+  
+  
+  
+  }
+  
+  .request-dinner {
+    color: #00875f;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 2.5rem;
+  }
+  
+  .request-dinner:hover {
+    color: #fff;
+    transition: 0.6s;
+  }
+  
+  @media (max-width: 768px) {
+    .ContainerAlign {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .ContainerAlign img {
+      width: 70%;
+      height: 50vh;
+    }
+  }
+  

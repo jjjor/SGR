@@ -12,3 +12,12 @@ def today_meal(request):
 
 def today_menu(request):
     return render(request, 'today_menu.html', {})
+
+def my_requests(request):
+    return render(request, 'my_requests.html', {})
+
+def request_meal(request):
+    return render(request, 'request_meal.html', {})
+
+def requests(request):
+    return render(request, 'requests.html', {})

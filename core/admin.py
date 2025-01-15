@@ -1,7 +1,19 @@
 from django.contrib import admin
-from core.models import Snack, RequestSnack, User
+from core.models import Snack, RequestSnack
+from django.contrib.auth.admin import UserAdmin
 
-admin.site.register(User)
+from .models import CustomUser
+
+class MyUserAdmin(UserAdmin):
+    model = CustomUser
+
+    fieldsets = UserAdmin.fieldsets + (
+            (None, {'fields': ('is_holder', 'is_student',)}),
+    )
+
+# Register your models here.
+admin.site.register(CustomUser, MyUserAdmin)
+
 @admin.register(Snack)
 class SnackAdmin(admin.ModelAdmin):
     list_display = ("description", "likes", "snack_to_day", "type", "active")

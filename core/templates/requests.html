@@ -1,0 +1,64 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/requests.css' %}" />
+{% if user.is_holder or user.is_superuser%}
+<div class="ContainerAllRequestNeal">
+  <div class="ContentAllRequestNeal">
+    <div class="HeaderAllRequestNeal">
+      <span class="QtdAllRequestNeal"
+        ><p>Número de solicitações:</p>
+        <strong>2</strong></span>
+        
+      <h1>Solicitações de refeições</h1>
+    </div>
+    <div class="AllRequestNeal">
+      
+      <div class="Neal">
+        <h1>Solicitação</h1>
+        <div class="ContentNeal">
+          <span class="ContentNealTxt">
+            <h4>Nome:</h4>
+            <p>Jordan</p>
+            <h4>Tipo:</h4>
+            <p>Jantar</p>
+            <h4>Data:</h4>
+            <p>12/12/2012</p>
+            <h4>Justificativa:</h4>
+            <p>Práticas esportivas.</p>
+          </span>
+          <div class="ContentNealButtons">
+            <a href="" id="btnApprove"
+              >Aprovar</a
+            >
+            <a href="" id="btnReject"
+              >Rejeitar</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="Neal">
+        <h1>Solicitação</h1>
+        <div class="ContentNeal">
+          <span class="ContentNealTxt">
+            <h4>Nome:</h4>
+            <p>Robert</p>
+            <h4>Tipo:</h4>
+            <p>Almoço</p>
+            <h4>Data:</h4>
+            <p>15/15/2015</p>
+            <h4>Justificativa:</h4>
+            <p>Aula em turno inverso.</p>
+          </span>
+          <div class="ContentNealButtons">
+            <a href="" id="btnApprove"
+              >Aprovar</a
+            >
+            <a href="" id="btnReject"
+              >Rejeitar</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ {% endif %} {% endblock %}

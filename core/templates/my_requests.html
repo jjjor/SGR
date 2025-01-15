@@ -1,0 +1,56 @@
+{% extends "base.html" %} 
+{% load static %} 
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/my_requests.css' %}" />
+
+<div class="my-request-container">
+  <h1>Minhas solicitações</h1>
+
+  <div class="my-request-content">
+    
+    <div class="card-request">
+      <div class="data-request">
+        <p class="title-date-request">Data de Solicitação</p>
+        <p class="request-date">12/12/2012</p>
+        <p class="type-request">Tipo da solicitação:</p>
+        <p class="type-request-text">Jantar</p>
+      </div>
+      <div class="situation-container">
+        <p class="title-situation">Situação:</p>
+        
+        <p class="situation-accept">Deferido</p>
+        
+      </div>
+    </div>
+    <div class="card-request">
+        <div class="data-request">
+          <p class="title-date-request">Data de Solicitação</p>
+          <p class="request-date">12/12/2012</p>
+          <p class="type-request">Tipo da solicitação:</p>
+          <p class="type-request-text">Jantar</p>
+        </div>
+        <div class="situation-container">
+          <p class="title-situation">Situação:</p>
+    
+          <p class="situation-pending">Pendente</p>
+          
+        </div>
+      </div>
+      <div class="card-request">
+        <div class="data-request">
+          <p class="title-date-request">Data de Solicitação</p>
+          <p class="request-date">12/12/2012</p>
+          <p class="type-request">Tipo da solicitação:</p>
+          <p class="type-request-text">Jantar</p>
+        </div>
+        <div class="situation-container">
+          <p class="title-situation">Situação:</p>
+          
+          <p class="situation-reject">Indeferida</p>
+          
+        </div>
+      </div>
+  </div>
+</div>
+
+{% endblock %}

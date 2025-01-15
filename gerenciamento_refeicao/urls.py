@@ -25,4 +25,7 @@ urlpatterns = [
     path('create-meal/', views.create_meal, name='create_meal'),
     path('today_meal/', views.today_meal, name='today_meal'),
     path('today_menu/', views.today_menu, name='today_menu'),
+    path('my_requests/', views.my_requests, name='my_requests'),
+    path('request_meal/', views.request_meal, name='request_meal'),
+    path('requests/', views.requests, name='requests'),
 ]

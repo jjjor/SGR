@@ -9,13 +9,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon.png' %}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/logohead.png' %}" />
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="theme-color" content="#ffffff" />
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/today_menu.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/request.css' %}" />
     <link rel="stylesheet" href="{% static 'css/allRequest.css' %}" />
     <link rel="stylesheet" href="{% static 'css/create_meal.css' %}" />
     <link rel="stylesheet" href="{% static 'css/today_meal.css' %}" />
@@ -27,23 +26,28 @@
 <body class="body">
     <header class="header" id="header">
         <a href="/">
-            <img src="{% static 'img/logo.png' %}" alt="logo do gerenciamento de refeição" id="logo" />
+            <img src="{% static 'img/logohead.png' %}" alt="logo do gerenciamento de refeição" id="logo" />
         </a>
         <nav class="navBar">
             {% if user.is_authenticated %}
-                {% if not user.is_superuser %}
-                    
-                    <a href="">Cardápio do dia</a>
-                    <a href="">Solicitar refeição</a>
-                    <a href="">Minhas solicitações</a>
+
+                <a href="{% url 'today_menu' %}">Cardápio do dia</a>
+
+                {% if user.is_student %}
+                    <a href="{% url 'request_meal' %}">Solicitar refeição</a>
+                    <a href="{% url 'my_requests' %}">Minhas solicitações</a>
                 {% endif %}
     
+                {% if user.is_holder or user.is_superuser %}
+                    <a href="{% url 'requests' %}">Analisar solicitações</a>
+                {% endif %}
+
                 {% if user.is_superuser %}
                    
                 <a href="{% url 'create_meal' %}">Cadastrar refeições</a>
                     <a href="{% url 'today_meal'%}">Escolher prato do dia</a>
                 {% endif %}
-    
+
                 <p>Olá, {{ user.username }}</p>
                 <a href=""><img src="{% static 'img/logout.svg' %}" alt="Logout" /></a>
             {% else %}
@@ -60,14 +64,14 @@
         <a href="/">
             <img src="{% static "img/logo.png" %}" alt="logo do gerenciamento de refeição" width="100" height="80">
         </a>
-        <img src="{% static 'img/burger-menu.svg' %}" width="32" height="32" alt="Menu" onclick="mostrarMenu()">
+        <img src="{% static 'img/burger-menu-black.svg' %}" width="32" height="32" alt="Menu" onclick="mostrarMenu()">
         <nav class="navBar-mobile">
             {% if not user.coordenator and not user.chef %}
                 <a href="">Cardápio do dia</a>
                 <a href="">Solicitar refeição</a>
                 <a href="">Minhas solicitações</a>
             {% endif %}
-            {% if user.coordenator %}
+            {% if user.is_holder or user.is_superuser %}
                 <a href="">Analisar solicitações</a>
             {% endif %}
             {% if user.chef %}
@@ -78,7 +82,7 @@
                 <a class="btnLogin" href="">Login</a>
             {% endif %}
             {% if not user.is_anonymous %}
-                <a href="#">Olá, {{ user.first_name }}</a>
+                <a href="#">Olá, {{ user.username }}</a>
                 <a href=""><img src="{% static 'img/logout.svg' %}" alt="Logout" style="width: 28px"></a>
             {% endif %}
         </nav>
@@ -128,7 +132,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="{% static 'js/mobileMenu.js' %}"></script>
+    <script src="{% static 'js/menuMobile.js' %}"></script>
 </body>
 
 </html>
