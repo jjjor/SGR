@@ -1,23 +1,62 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+from django.contrib.auth import get_user_model
+from django.views.generic import TemplateView, FormView
+from django.contrib.auth.models import User
 
-# Create your views here.
-def index(request):
-    return render(request, 'base.html', {})
+User = get_user_model()
 
-def create_meal(request):
-    return render(request, 'create_meal.html', {})
 
-def today_meal(request):
-    return render(request, 'today_meal.html', {})
 
-def today_menu(request):
-    return render(request, 'today_menu.html', {})
 
-def my_requests(request):
-    return render(request, 'my_requests.html', {})
+class LoginView(TemplateView):
 
-def request_meal(request):
-    return render(request, 'request_meal.html', {})
+    template_name = 'login.html'
 
-def requests(request):
-    return render(request, 'requests.html', {})
+class RegisterView(TemplateView):
+
+    template_name = "register.html" 
+
+    def post(self, request, *args, **kwargs):
+        username = request.POST.get("username")
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+
+        user = User.objects.filter(username=username).first()
+
+        if user:
+            return HttpResponse('ja existe saporr apoapoapsopso')
+        
+        user = User.objects.create_user(username=username, email=email, password=password)
+        user.save()
+
+        return HttpResponse('usuario cadastrado')
+
+    
+class IndexView(TemplateView):
+
+    template_name = 'base.html'
+
+class CreateMealView(TemplateView):
+
+    template_name = 'create_meal.html'
+
+class TodayMealView(TemplateView):
+
+    template_name = 'today_meal.html'
+
+class TodayMenuView(TemplateView):
+
+    template_name = 'today_menu.html'
+
+class MyRequestsView(TemplateView):
+
+    template_name = 'my_requests.html'
+
+class RequestMealView(TemplateView):
+
+    template_name = 'request_meal.html'
+
+class RequestsView(TemplateView):
+
+    template_name = 'requests.html'

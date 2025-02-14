@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+
+
+
+<form class='form-content' action="{% url 'register' %}" method='POST'>  {% csrf_token %}
+    <input type='text' placeholder='Usuário...', name='username'>
+    <input type='email' placeholder='E-mail...', name='email'>
+    <input type='password' placeholder='Senha...', name='password'>
+    <button type='submit'>Cadastrar-se</button>
+</form>
+
+
+
+
+
+
+
+
+
+{% endblock %}
