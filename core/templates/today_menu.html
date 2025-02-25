@@ -25,7 +25,7 @@
         </div>
         <p class="snack-description">{{ almoco_snack.description }}</p>
         {% if not user.is_anonymous %}
-        <a href="request-snack" id="requestSnack">Solicitar refeição</a>
+        <a href="{% url 'request_meal' %}" id="requestSnack">Solicitar refeição</a>
         {% endif %}
         
       </div>
@@ -48,7 +48,7 @@
         </div>
         <p class="snack-description">{{ janta_snack.description }}</p>
         {% if not user.is_anonymous %}
-        <a href="request-snack" id="requestSnack">Solicitar refeição</a>
+        <a href="{% url 'request_meal' %}" id="requestSnack">Solicitar refeição</a>
         {% endif %}
         
       </div>

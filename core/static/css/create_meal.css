@@ -26,7 +26,7 @@
     width: 100%;
     justify-content: left;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
   }
   .ContainerContentFormMeal h4 {
     color: #121214;
@@ -38,8 +38,8 @@
     align-items: center;
     flex-direction: column;
     border: 1px solid #00875f;
-    height: 490px;
-    width: 460px;
+    height: 520px;
+    width: 490px;
     border-radius: 4px;
     padding: 32px 64px;
     gap: 32px;

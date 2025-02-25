@@ -1,128 +1,54 @@
-{% extends "base.html" %} {% load static %} {% block content %} 
-{% if user.is_superuser %} {% if not user.is_anonymous %}
+{% extends "base.html" %}
+{% load static %}
 
-<link rel="stylesheet" href="{% static 'css/today_meal.css' %}" />
+{% block content %}
+  <link rel="stylesheet" href="{% static 'css/today_meal.css' %}" />
 
-<div class="select-dish">
-  <div class="select-dish-container">
-    {% if messages %} {% for message in messages %}
-    <p style="color: red">{{ message }}</p>
-    {% endfor %} {% endif %}
-    <h1>Selecionar as refeições do dia</h1>
-    <div class="registered-dish">
-      <h2>Almoços cadastrados</h2>
-      <div class="registered-dish-container">
-        
-        <div class="card-dish">
-          <img src="{% static 'img/almoco.png' %}" alt="" />
-          <div class="description">
-            <p class="description-title">Descrição:</p>
-            <p class="description-text">Arroz, feijão e carne</p>
-          </div>
-          
-          <div class="selectDishToDay">
-            <a
-              href=""
-              class="btn-select-dish"
-              title="Seleciona a refeição do dia"
-              >Selecionar</a
-            >
-          </div>
-          <a class="delete-button"
-          title="Retira da refeição o titulo de refeição do dia"
-          href=""
-          ><img
-            src="{% static 'img/x-circle.svg' %}"
-            alt=""
-            id="imageRemove"
-        /></a>
-        </div>
+  <div class="select-dish">
+    <div class="select-dish-container">
+      <h1>Selecionar as refeições do dia</h1>
 
-        <div class="card-dish">
-          <img src="{% static 'img/almoco.png' %}" alt="" />
-          <div class="description">
-            <p class="description-title">Descrição:</p>
-            <p class="description-text">Arroz, feijão e carne</p>
-          </div>
-          
-          <div class="selectDishToDay">
-            <a
-              href=""
-              class="btn-select-dish"
-              title="Seleciona a refeição do dia"
-              >Selecionar</a
-            >
-          </div>
-          <a class="delete-button"
-          title="Retira da refeição o titulo de refeição do dia"
-          href=""
-          ><img
-            src="{% static 'img/x-circle.svg' %}"
-            alt=""
-            id="imageRemove"
-        /></a>
-        </div>
-
-        <div class="card-dish">
-          <img src="{% static 'img/almoco.png' %}" alt="" />
-          <div class="description">
-            <p class="description-title">Descrição:</p>
-            <p class="description-text">Arroz, feijão e carne</p>
-          </div>
-          
-          <div class="selectDishToDay">
-            <a
-              href=""
-              class="btn-select-dish"
-              title="Seleciona a refeição do dia"
-              >Selecionar</a
-            >
-          </div>
-          <a class="delete-button"
-          title="Retira da refeição o titulo de refeição do dia"
-          href=""
-          ><img
-            src="{% static 'img/x-circle.svg' %}"
-            alt=""
-            id="imageRemove"
-        /></a>
+      <div class="registered-dish">
+        <h2>Selecionar almoço do dia</h2>
+        <div class="registered-dish-container">
+          <p>
+          {% for meal in lunchs %}
+            <div class="card-dish">
+              <img src="{{ meal.image.url }}" alt="Imagem do prato" />
+              <div class="description">
+                <p class="description-title">Descrição:</p>
+                <p class="description-text">{{ meal.description }}</p>
+              </div>
+              <div class="selectDishToDay">
+                <a href="#" class="btn-select-dish">Selecionar</a>
+              </div>
+            </div>
+          {% empty %}
+            <p>Nenhum almoço cadastrado.</p>
+          {% endfor %}
         </div>
       </div>
-    </div>
-    <div class="registered-dish">
-      <h2>Jantas cadastradas</h2>
-      <div class="registered-dish-container">
-        
-        
 
-        <div class="card-dish">
-          <img src="{% static 'img/janta.png' %}" alt="" />
-          <div class="description">
-            <p class="description-title">Descrição:</p>
-            <p class="description-text">Arroz, feijão e carne</p>
-          </div>
-          
-          <div class="selectDishToDay">
-            <a
-              href=""
-              class="btn-select-dish"
-              title="Seleciona a refeição do dia"
-              >Selecionar</a
-            >
-          </div>
-          <a class="delete-button"
-          title="Retira da refeição o titulo de refeição do dia"
-          href=""
-          ><img
-            src="{% static 'img/x-circle.svg' %}"
-            alt=""
-            id="imageRemove"
-        /></a>
+      <div class="registered-dish">
+        <h2>Selecionar jantar do dia</h2>
+        <div class="registered-dish-container">
+          <p>
+          {% for meal in dinners %}
+            <div class="card-dish">
+              <img src="{{ meal.image.url }}" alt="Imagem do prato" />
+              <div class="description">
+                <p class="description-title">Descrição:</p>
+                <p class="description-text">{{ meal.description }}</p>
+              </div>
+              <div class="selectDishToDay">
+                <a href="#" class="btn-select-dish">Selecionar</a>
+              </div>
+            </div>
+          {% empty %}
+            <p>Nenhuma janta cadastrada.</p>
+          {% endfor %}
         </div>
-        
       </div>
     </div>
   </div>
-</div>
-
-{% endif %} {% endif %} {% endblock %}
+{% endblock %}

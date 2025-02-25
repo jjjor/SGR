@@ -7,7 +7,7 @@ h1 {
 
 /* Estilização da tabela */
 .styled-table {
-    width: 80%; /* Definindo uma largura maior para centralizar a tabela */
+    width: 60%; /* Definindo uma largura maior para centralizar a tabela */
     margin: 20px auto; /* Centralizando a tabela na página */
     border-collapse: collapse;
     text-align: center; /* Centralizando o conteúdo da tabela */
@@ -73,9 +73,59 @@ h1 {
 
 /* Mensagem quando não há resultados */
 .empty-message {
+
+    width: 100%;
     text-align: center;
     font-size: 18px;
     color: #888;
     padding: 20px;
     font-style: italic;
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.meal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.meal-table th, .meal-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.meal-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }

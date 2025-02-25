@@ -1,39 +1,38 @@
 {% extends "base.html" %}
-{% block content %}
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'css/list_meals.css' %}">
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/list_meals.css' %}" />
 
-<h1>Minhas Solicitações</h1>
+<div class="main-content">
+    <div class="container">
+        <h1 class="title">Lista de Refeições</h1>
 
-<table class="styled-table">
-    <thead>
-        <tr>
-            <th>Data</th>
-            <th>Tipo</th>
-            <th>Justificativa</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for meal in meals %}
-        <tr>
-            <td>{{ meal.date|date:"d/m/Y" }}</td>
-            <td>{{ meal.get_meal_type_display }}</td>
-            <td>{{ meal.get_justification_display }}</td>
-            <td>
-                <a href="{% url 'update_meal' meal.pk %}" class="edit-btn">Editar</a>
-                <a href="{% url 'delete_meal' meal.pk %}" class="delete-btn">Cancelar</a>
-            </td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="4" class="empty-message">Nenhuma solicitação encontrada.</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
+        {% if meals %}
+            <table class="meal-table">
+                <thead>
+                    <tr>
+                        <th>Tipo da Refeição</th>
+                        <th>Descrição</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for meal in meals %}
+                        <tr>
+                            <td>{{ meal.get_meal_type_display }}</td>
+                            <td>{{ meal.description }}</td>
+                            <td class="actions">
+                                <a href="{% url 'edit_meal' meal.pk %}" class="btn edit-btn">Editar</a>
+                                <a href="{% url 'delete_meal' meal.pk %}" class="btn delete-btn">Excluir</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="empty-message">Nenhuma refeição cadastrada.</p>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
-
-

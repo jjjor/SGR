@@ -112,7 +112,7 @@
   }
   
   .btn-select-dish {
-    background-color: #05855e;
+    background-color: #00875F;
     border: none;
     color: white;
     font-weight: bold;
@@ -120,11 +120,12 @@
     border-radius: 0.3rem;
     cursor: pointer;
     text-decoration: none;
+    transition: 0.3s;
   }
   
   .btn-select-dish:hover {
     cursor: pointer;
-    background: #00b37e;
+    background: #08996e;
   }
   
   @media (max-width: 850px) {

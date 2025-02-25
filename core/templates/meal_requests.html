@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="main-content">
+    <div class="container">
+        <link rel="stylesheet" href="{% static 'css/meal_requests.css' %}" />
+
+        {% if user.is_holder or user.is_superuser %}
+            <h1>Alterar Status das Solicitações</h1>
+
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li class="message {{ message.tags }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <form method="post">
+                {% csrf_token %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Solicitante</th>
+                            <th>Tipo</th>
+                            <th>Data da Solicitação</th>
+                            <th>Justificativa</th>
+                            <th>Status Atual</th>
+                            <th>Alterar Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for meal in meal_requests %}
+                            <tr>
+                                <td>{{ meal.user.username }}</td>
+                                <td>{{ meal.get_meal_type_display }}</td>
+                                <td>{{ meal.date }}</td>
+                                <td>{{ meal.get_justification_display }}</td>
+                                <td>{{ meal.get_status_display }}</td>
+                                <td>
+                                    <input type="hidden" name="meal_ids" value="{{ meal.id }}">
+
+                                    <!-- Verifica se o usuário atual é o solicitante. Se for, desabilita a seleção -->
+                                    {% if meal.user == user %}
+                                        <select name="status" disabled>
+                                            <option value="pendente" {% if meal.status == 'pendente' %}selected{% endif %}>Pendente</option>
+                                            <option value="deferido" {% if meal.status == 'deferido' %}selected{% endif %}>Deferido</option>
+                                            <option value="indeferido" {% if meal.status == 'indeferido' %}selected{% endif %}>Indeferido</option>
+                                        </select>
+                                    {% else %}
+                                        <select name="status">
+                                            <option value="pendente" {% if meal.status == 'pendente' %}selected{% endif %}>Pendente</option>
+                                            <option value="deferido" {% if meal.status == 'deferido' %}selected{% endif %}>Deferido</option>
+                                            <option value="indeferido" {% if meal.status == 'indeferido' %}selected{% endif %}>Indeferido</option>
+                                        </select>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td colspan="6" class="empty-message">Nenhuma solicitação encontrada.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <button type="submit">Atualizar Status</button>
+            </form>
+
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

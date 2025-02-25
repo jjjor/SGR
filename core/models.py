@@ -18,13 +18,36 @@ class MealRequest(models.Model):
         ('esporte', 'Práticas esportivas'),
     ]
 
+    STATUS_CHOICES = [
+        ('pendente', 'Pendente'),
+        ('deferido', 'Deferido'),
+        ('indeferido', 'Indeferido'),
+    ]
+
+
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date = models.DateField(auto_now_add=True)
     meal_type = models.CharField(max_length=10, choices=MEAL_CHOICES)
     justification = models.CharField(max_length=20, choices=JUSTIFICATION_CHOICES)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pendente')
 
     def __str__(self):
         return f"{self.user} - {self.justification} - {self.meal_type}"
+    
+
+class Meal(models.Model):
+    MEAL_CHOICES = (
+        ('lunch', 'Almoço'),
+        ('dinner', 'Janta'),
+    )
+
+    meal_type = models.CharField(max_length=6, choices=MEAL_CHOICES)
+    description = models.TextField()
+    image = models.ImageField(upload_to='meals_images/')
+    
+    def __str__(self):
+        return f"{self.get_meal_type_display()} - {self.description[:20]}"
+    
 
 
 class CustomUser(AbstractUser):

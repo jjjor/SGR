@@ -2,10 +2,12 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
 from django.views.generic import TemplateView, View, CreateView, ListView, UpdateView, DeleteView
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib import messages
+from django.utils import timezone
 from django.urls import reverse_lazy
-from .models import MealRequest
-from .forms import MealRequestForm
+from .models import MealRequest, Meal
+from .forms import MealRequestForm, MealForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
@@ -48,61 +50,118 @@ class RegisterView(TemplateView):
 
         if User.objects.filter(username=username).exists():
             messages.error(request, "Já existe um usuário com esses dados.")
-            return redirect('register')  # Redireciona para a mesma página
+            return redirect('register')
 
         user = User.objects.create_user(username=username, email=email, password=password)
+        user.is_student = True
         user.save()
 
         messages.success(request, "Cadastro realizado com sucesso! Faça login.")
-        return redirect('login') 
+        return redirect('login')
+    
+    
+class TodayMealView(ListView):
+    model = Meal
+    template_name = 'today_meal.html'
+    context_object_name = 'meals'
+
+    # Utilizando get_context_data para adicionar lunch e dinner ao contexto
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        # Filtrando almoços e jantares
+        lunchs = Meal.objects.filter(meal_type='lunch')
+        dinners = Meal.objects.filter(meal_type='dinner')
+
+        # Adicionando ao contexto
+        context['lunch'] = lunchs
+        context['dinner'] = dinners
+
+        return context
     
 
-# View para criar uma solicitação de refeição
+
+
 class MealRequestCreateView(LoginRequiredMixin, CreateView):
     model = MealRequest
     form_class = MealRequestForm
     template_name = 'request_meal.html'
-    success_url = reverse_lazy('list_meals')
+    success_url = reverse_lazy('my_requests')
 
     def form_valid(self, form):
-        # Atribui o usuário logado à solicitação de refeição
+        # Verificar se já existe uma solicitação para o mesmo dia
+        today = timezone.now().date()
+        user = self.request.user
+        existing_request = MealRequest.objects.filter(user=user, date=today).exists()
+        
+        if existing_request:
+            messages.error(self.request, "Você já solicitou uma refeição para hoje.")
+            return redirect('request_meal')  # Redireciona para a página de solicitação
+        
+        # Caso contrário, salvar a solicitação
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-# View para listar todas as solicitações do usuário
+
 class MealRequestListView(LoginRequiredMixin, ListView):
     model = MealRequest
-    template_name = 'list_meals.html'
+    template_name = 'my_requests.html'
     context_object_name = 'meals'
 
     def get_queryset(self):
+        if self.request.user.is_staff or self.request.user.is_superuser:
+            return MealRequest.objects.all()
         return MealRequest.objects.filter(user=self.request.user)
 
-# View para editar uma solicitação de refeição
+
 class MealRequestUpdateView(LoginRequiredMixin, UpdateView):
     model = MealRequest
     form_class = MealRequestForm
     template_name = 'request_meal.html'
-    success_url = reverse_lazy('list_meals')
+    success_url = reverse_lazy('my_requests')
 
     def get_queryset(self):
-        # Garante que o usuário só possa editar suas próprias solicitações
         return MealRequest.objects.filter(user=self.request.user)
 
-# View para excluir uma solicitação de refeição
+
 class MealRequestDeleteView(DeleteView):
     model = MealRequest
-    success_url = reverse_lazy('list_meals') 
-    template_name = None 
+    success_url = reverse_lazy('my_requests')
+    pk_url_kwarg = 'pk'
+
+    def get(self, request, *args, **kwargs):
+        return self.delete(request, *args, **kwargs)
 
     def get_queryset(self):
-        # Garante que o usuário só possa excluir suas próprias solicitações
         return MealRequest.objects.filter(user=self.request.user)
     
+    
+class MealRequestStatusUpdateView(View):
+    def post(self, request, *args, **kwargs):
+        meal_ids = request.POST.getlist('meal_ids')
+        status = request.POST.getlist('status')
 
+        for meal_id, new_status in zip(meal_ids, status):
+            meal_request = MealRequest.objects.get(id=meal_id)
 
+            # Verifica se o usuário tentando alterar o status é o próprio solicitante
+            if meal_request.user == request.user:
+                messages.error(request, f"Você não pode alterar o status da sua própria solicitação de {meal_request.get_meal_type_display()}.")
+                continue  # Pula para a próxima solicitação
 
+            meal_request.status = new_status
+            meal_request.save()
 
+        # Adiciona uma mensagem de sucesso após atualizar os status
+        messages.success(request, "Status das solicitações atualizados com sucesso!")
+        
+        # Redireciona para a página de solicitações
+        return redirect('meal_requests')
+
+    def get(self, request, *args, **kwargs):
+        # Obtém todas as solicitações de refeição
+        meal_requests = MealRequest.objects.all()
+        return render(request, 'meal_requests.html', {'meal_requests': meal_requests})
 
 
     
@@ -110,9 +169,51 @@ class IndexView(TemplateView):
 
     template_name = 'base.html'
 
-class CreateMealView(TemplateView):
 
+class MealCreateView(LoginRequiredMixin, CreateView):
+    model = Meal
+    form_class = MealForm
     template_name = 'create_meal.html'
+    success_url = reverse_lazy('list_meals')  # Redireciona para a lista de refeições após criar
+
+    def form_valid(self, form):
+        if not self.request.user.is_superuser:
+            return redirect('home')  # Apenas admin pode criar refeições
+        return super().form_valid(form)
+    
+class MealListView(ListView):
+    model = Meal
+    template_name = 'list_meals.html'
+    context_object_name = 'meals'
+
+class MealUpdateView(LoginRequiredMixin, UpdateView):
+    model = Meal
+    form_class = MealForm
+    template_name = 'create_meal.html'
+    success_url = reverse_lazy('list_meals')
+
+    def form_valid(self, form):
+        if not self.request.user.is_superuser:
+            return redirect('home')  # Apenas admin pode editar refeições
+        return super().form_valid(form)
+    
+class MealDeleteView(LoginRequiredMixin, DeleteView):
+    model = Meal
+    template_name = 'confirm_delete_meal.html'
+    success_url = reverse_lazy('list_meals')
+    pk_url_kwarg = 'pk'
+
+    def get(self, request, *args, **kwargs):
+        return self.delete(request, *args, **kwargs)
+
+    def get_queryset(self):
+        return Meal.objects.filter(user=self.request.user)
+
+    def get_queryset(self):
+        # Somente o superusuário pode excluir
+        if not self.request.user.is_superuser:
+            return Meal.objects.none()
+        return Meal.objects.all()
 
 class TodayMealView(TemplateView):
 
@@ -129,7 +230,3 @@ class MyRequestsView(TemplateView):
 class RequestMealView(TemplateView):
 
     template_name = 'request_meal.html'
-
-class RequestsView(TemplateView):
-
-    template_name = 'requests.html'

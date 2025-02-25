@@ -103,6 +103,7 @@
     color: white;
     border-radius: 4px;
     font-weight: bold;
+    transition: 0.3s;
   }
   .requestSnackc {
     padding: 4px 40px;
@@ -112,13 +113,14 @@
     color: white;
     border-radius: 4px;
     font-weight: bold;
+    transition: 0.3s;
   }
   
   #requestSnack:hover {
-    background: #00b37e;
+    background: #08996e;
   }
   .requestSnackc:hover {
-    background: #00b37e;
+    background: #08996e;
   }
   
   .clock {

@@ -1,202 +1,131 @@
-/* solicitar almoço */
+/* Estilo geral para a página */
 .ContainerRequest {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: auto;
-    width: 100%;
-  }
-  
-  .ContainerContent {
-    height: auto;
-    background-color: white;
-    margin: 0 auto;
-    display: flex;
-    padding: 4rem;
-    border-radius: 1rem;
-    gap: 2rem;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-  }
-  
-  .ContainerTxtRequest {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #fcfcfc;
-    padding: 1rem 2rem 1rem 2rem;
-    border-radius: 0.5rem;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ffffff; /* Cor de fundo suave */
+}
+
+/* Contêiner que contém o conteúdo */
+.ContainerContent {
+  background-color: #fff; /* Fundo branco para o conteúdo */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  width: 100%;
+  max-width: 500px; /* Limita a largura do formulário */
+}
+
+/* Alinhamento do conteúdo dentro do contêiner */
+.ContainerAlign {
+  text-align: center;
+}
+
+/* Estilo para o título */
+h1 {
+  font-size: 24px;
+  color: #333; /* Cor de texto escura */
+  margin-bottom: 20px;
+}
+
+/* Estilo do formulário */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Estilo dos campos de formulário */
+.formulario p {
+  text-align: left;
+  margin: 0;
+}
+
+.formulario input[type="text"],
+.formulario input[type="email"],
+.formulario input[type="password"],
+.formulario select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Estilo do botão de envio */
+#request-button {
+  background-color: #00875F; /* Cor azul */
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#request-button:hover {
+  background-color: #08996e; /* Azul escuro ao passar o mouse */
+}
+
+/* Ajustes de responsividade */
+@media (max-width: 600px) {
+  .ContainerRequest {
+      padding: 0 15px;
   }
 
-  .ContainerTxtRequest select {
-    padding: 10px;
-    font-size: 16px;
-    background-color: #f0f0f0;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    width: 200px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .ContainerAlign {
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    gap: 2rem;
-  }
-  
-  .ContainerTxtRequest h1 {
-    color: #00875f;
-    text-align: center;
-  }
-  
-  .formulario {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .formulario label {
-    color: black;
-    font-size: 1.2rem;
-  }
-  
-  .formulario #dish {
-    height: 2em;
-    width: 150px;
-    border: none;
-    border-radius: 0.2rem;
-    font-size: 1rem;
-    padding: 0.2rem 0.5rem;
-    background-color: #f1f1f1 ;
-    text-transform: uppercase;
-    color: rgba(13, 13, 14, 0.8);
-    font-weight: bold;
-  }
-  
-  .formulario #justification {
-    width: 90%;
-    border: none;
-    font-size: 1rem;
-    border-radius: 0.2rem;
-    background-color: #d9d9d9;
-    color: rgba(80, 80, 89, 0.8);
-    font-weight: bold;
-  }
-  
-  #request-button {
-    margin-top: 1.5rem;
-    color: #fff;
-    padding: 0.5rem;
-    background-color: #00875f;
-    border: none;
-    font-size: 1rem;
-    font-weight: bold;
-    width: 90%;
-    border-radius: 0.5rem;
-    cursor: pointer;
-  }
-  
-  #request-button:hover {
-    cursor: pointer;
-    background-color: #00a372;
-  }
-  
-  .request-snack {
-    color: #00875f;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 2.5rem;
-  }
-  
-  .request-snack:hover {
-    color: #fff;
-    transition: 0.6s;
-  }
-  
-  @media (max-width: 850px) {
-    .ContainerAlign img {
-      display: none;
-    }
-  
-    .ContainerRequest {
-      max-width: 90%;
-      margin: 0 auto;
-      padding: 0;
-    }
-  
-    .ContainerContent {
-      padding: 2rem 1rem;
-    }
-  
-    .ContainerTxtRequest h1 {
-      font-size: 1.5rem;
-    }
-  
-    .ContainerAlign {
-      max-width: 90%;
-    }
-  
-    .formulario {
+  .ContainerContent {
       width: 100%;
-    }
-  
-    .formulario label {
-      font-size: 1rem;
-    }
-  
-    .ContainerTxtRequest {
-      gap: 1rem;
-    }
-  
   }
-  
-  @media (max-width: 768px) {
-    .ContainerAlign {
-      display: flex;
-      flex-direction: column;
-    }
-  
-    .ContainerAlign img {
-      width: 70%;
-      height: 50vh;
-    }
-  
-  
-  
-  
-  
+
+  #request-button {
+      font-size: 14px; /* Ajusta o tamanho do botão em telas pequenas */
   }
-  
-  .request-dinner {
-    color: #00875f;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 2.5rem;
-  }
-  
-  .request-dinner:hover {
-    color: #fff;
-    transition: 0.6s;
-  }
-  
-  @media (max-width: 768px) {
-    .ContainerAlign {
-      display: flex;
-      flex-direction: column;
-    }
-  
-    .ContainerAlign img {
-      width: 70%;
-      height: 50vh;
-    }
-  }
-  
+}
+
+
+/* Mensagens de sucesso */
+.message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Mensagens de erro */
+.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Mensagens informativas */
+.message.info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  border: 1px solid #bee5eb;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Mensagens de alerta */
+.message.warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style-type: none; /* Remove os marcadores da lista */
+  padding: 0; /* Remove o padding */
+  margin: 0; /* Remove a margem */
+}

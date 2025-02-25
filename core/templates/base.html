@@ -33,24 +33,24 @@
 
                 <a href="{% url 'today_menu' %}">Cardápio do dia</a>
 
-                {% if user.is_student %}
+                {% if user.is_student or user.is_holder %}
                     <a href="{% url 'request_meal' %}">Solicitar refeição</a>
-                    <a href="{% url 'list_meals' %}">Minhas solicitações</a>
+                    <a href="{% url 'my_requests' %}">Minhas solicitações</a>
                 {% endif %}
     
                 {% if user.is_holder or user.is_superuser %}
-                    <a href="{% url 'requests' %}">Analisar solicitações</a>
+                        <a href="{% url 'meal_requests' %}" class="status-btn">Analisar solicitações</a>
                 {% endif %}
 
                 {% if user.is_superuser %}
-                   
                 <a href="{% url 'create_meal' %}">Cadastrar refeições</a>
-                    <a href="{% url 'today_meal'%}">Escolher prato do dia</a>
+                <a href="{% url 'today_meal'%}">Escolher prato do dia</a>
+                <a href="{% url 'list_meals' %}">Lista de refeições</a>
                 {% endif %}
 
                 <p>Olá, {{ user.username }}</p>
                 <a href="{% url 'logout' %}"><img src="{% static 'img/logout.svg' %}" alt="Logout" /></a>
-            {% else %}
+                {% else %}
             
                 <a href="{% url 'today_menu' %}">Cardápio do dia</a>
                 <a class="btnLogin" href="{% url 'login' %}">Login</a>

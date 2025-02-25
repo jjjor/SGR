@@ -1,40 +1,36 @@
-{% extends "base.html" %} 
-{% load static %} 
-{% block content %} 
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
 <link rel="stylesheet" href="{% static 'css/create_meal.css' %}" />
-  {% if user.is_superuser %} 
-    {% if not user.is_anonymous %}
-      <div class="ContainerFormToCreateMeal">
-        <h1>Cadastre aqui as refeições</h1>
-        <div class="ContentFormToCreate">
-          <form action="" class="formCreateMeal" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <h3>Cadastrar Refeição</h3>
 
-            <div class="ContainerContentFormMeal">
-              <h4>Tipo da refeição:</h4>
-              <label>
-                <input type="checkbox" name="type" value="almoço"> Almoço
-              </label>
-              <label>
-                <input type="checkbox" name="type" value="janta"> Janta
-              </label>
-            </div>
+{% if user.is_superuser %}
+  {% if not user.is_anonymous %}
+    <div class="ContainerFormToCreateMeal">
+      <h1>Cadastre aqui as refeições</h1>
+      <div class="ContentFormToCreate">
+        <form action="" class="formCreateMeal" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <h3>Cadastrar Refeição</h3>
 
-            <div class="ContainerContentFormMeal">
-              <h4>Imagem:</h4>
-              <input type="file" id="imagem" name="imagem" accept="image/*">
-            </div>
+          <div class="ContainerContentFormMeal">
+            <h4>Tipo da refeição:</h4>
+            {{ form.meal_type }}
+          </div>
 
-            <div class="ContainerContentFormMeal">
-              <h4>Descrição do cardápio:</h4>
-              PF da Lúcia.
-            </div>
+          <div class="ContainerContentFormMeal">
+            <h4>Imagem:</h4>
+            {{ form.image }}
+          </div>
 
-            <button type="submit">Criar refeição</button>
-          </form>
-        </div>
+          <div class="ContainerContentFormMeal">
+            <h4>Descrição do prato:</h4>
+            {{ form.description }}
+          </div>
+
+          <button type="submit">Criar refeição</button>
+        </form>
       </div>
-    {% endif %}
+    </div>
   {% endif %}
+{% endif %}
 {% endblock %}
