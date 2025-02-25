@@ -6,22 +6,18 @@
 
   <div class="select-dish">
     <div class="select-dish-container">
-      <h1>Selecionar as refeições do dia</h1>
-
+      <h1>Refeições do dia</h1>
       <div class="registered-dish">
-        <h2>Selecionar almoço do dia</h2>
+        <h2>Almoços disponíveis</h2>
         <div class="registered-dish-container">
-          <p>
-          {% for meal in lunchs %}
+          {% for meal in lunch %}
             <div class="card-dish">
               <img src="{{ meal.image.url }}" alt="Imagem do prato" />
               <div class="description">
                 <p class="description-title">Descrição:</p>
                 <p class="description-text">{{ meal.description }}</p>
               </div>
-              <div class="selectDishToDay">
-                <a href="#" class="btn-select-dish">Selecionar</a>
-              </div>
+              
             </div>
           {% empty %}
             <p>Nenhum almoço cadastrado.</p>
@@ -30,19 +26,16 @@
       </div>
 
       <div class="registered-dish">
-        <h2>Selecionar jantar do dia</h2>
+        <h2>Jantares disponíveis</h2>
         <div class="registered-dish-container">
-          <p>
-          {% for meal in dinners %}
+          {% for meal in dinner %}
             <div class="card-dish">
               <img src="{{ meal.image.url }}" alt="Imagem do prato" />
               <div class="description">
                 <p class="description-title">Descrição:</p>
                 <p class="description-text">{{ meal.description }}</p>
               </div>
-              <div class="selectDishToDay">
-                <a href="#" class="btn-select-dish">Selecionar</a>
-              </div>
+              
             </div>
           {% empty %}
             <p>Nenhuma janta cadastrada.</p>

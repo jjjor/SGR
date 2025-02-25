@@ -49,7 +49,7 @@ class RegisterView(TemplateView):
         password = request.POST.get("password")
 
         if User.objects.filter(username=username).exists():
-            messages.error(request, "Já existe um usuário com esses dados.")
+            messages.error(request, "Já existe um usuário com esse usuário.")
             return redirect('register')
 
         user = User.objects.create_user(username=username, email=email, password=password)
@@ -60,27 +60,56 @@ class RegisterView(TemplateView):
         return redirect('login')
     
     
-class TodayMealView(ListView):
-    model = Meal
-    template_name = 'today_meal.html'
-    context_object_name = 'meals'
+class TodayMealView(TemplateView):
+    template_name = 'today_meal.html'  # Template que será renderizado
 
-    # Utilizando get_context_data para adicionar lunch e dinner ao contexto
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
 
-        # Filtrando almoços e jantares
         lunchs = Meal.objects.filter(meal_type='lunch')
         dinners = Meal.objects.filter(meal_type='dinner')
 
-        # Adicionando ao contexto
         context['lunch'] = lunchs
         context['dinner'] = dinners
 
         return context
     
+class TodayMenuView(TemplateView):
+    template_name = 'today_menu.html'  # Template que será renderizado
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
 
+        # Filtrando os pratos do tipo 'lunch' e 'dinner' no banco de dados
+        lunchs = Meal.objects.filter(meal_type='lunch')
+        dinners = Meal.objects.filter(meal_type='dinner')
+
+        context['lunch'] = lunchs
+        context['dinner'] = dinners
+
+        return context
+
+    
+    
+
+class SelectDishView(View):
+    def get(self, request, meal_id, meal_type):
+        # Recupera o prato selecionado
+        try:
+            meal = Meal.objects.get(id=meal_id)
+        except Meal.DoesNotExist:
+            return redirect('today_menu')  # Redireciona para a página de menu se não encontrar o prato
+
+        # Armazenando o prato selecionado na sessão
+        if meal_type == 'lunch':
+            request.session['selected_lunch'] = meal.id
+        elif meal_type == 'dinner':
+            request.session['selected_dinner'] = meal.id
+
+        # Redireciona para a página principal (ou qualquer outra página que você desejar)
+        return redirect('today_menu')
+    
+    
 
 class MealRequestCreateView(LoginRequiredMixin, CreateView):
     model = MealRequest
@@ -214,14 +243,6 @@ class MealDeleteView(LoginRequiredMixin, DeleteView):
         if not self.request.user.is_superuser:
             return Meal.objects.none()
         return Meal.objects.all()
-
-class TodayMealView(TemplateView):
-
-    template_name = 'today_meal.html'
-
-class TodayMenuView(TemplateView):
-
-    template_name = 'today_menu.html'
 
 class MyRequestsView(TemplateView):
 

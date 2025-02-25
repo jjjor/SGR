@@ -1,287 +1,114 @@
+/* Geral */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contêiner principal */
 .ContainerMenu {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    border-radius: 8px;
-    background: white;
-    gap: 45px;
-    margin-bottom: 32px;
-    padding: 2rem 0;
+  width: 80%;
+  margin: 20px auto;
+  background-color: #ffff;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+/* Título */
+h1 {
+  font-size: 2.5em;
+  color: #00875F;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Mensagem de erro ou aviso */
+p {
+  font-size: 1.2em;
+  color: red;
+  text-align: center;
+}
+
+/* Container de pratos (almoço/jantar) */
+.ContainerSnack {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Cada seção de refeição (almoço/jantar) */
+.ContainerTwoSnacks {
+  width: 45%;
+  text-align: center; /* Centraliza o conteúdo dentro da seção */
+}
+
+/* Títulos das seções de refeição */
+.snacks h1 {
+  font-size: 1.8em;
+  color: #555;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Card de cada refeição */
+.card-dish {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto; /* Garante que o card fique centralizado */
+}
+
+/* Imagem do prato */
+.card-dish img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 2px solid #ddd;
+}
+
+/* Descrição do prato */
+.description {
+  padding: 15px;
+  text-align: left;
+}
+
+/* Título da descrição */
+.description-title {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+
+/* Texto da descrição */
+.description-text {
+  font-size: 1em;
+  color: #777;
+}
+
+/* Caso não haja refeição disponível */
+p {
+  text-align: center;
+  font-size: 1.1em;
+  color: #888;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+  .ContainerMenu {
+      width: 95%;
   }
-  .ContainerMenu > h1 {
-    color: #00875f;
-    font-size: 48px;
-  }
-  
+
   .ContainerSnack {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 200px;
+      flex-direction: column;
   }
+
   .ContainerTwoSnacks {
-    display: flex;
-    justify-content: center;
-    width: 400px;
-    height: auto;
-    background: #fcfcfc;
-    border-radius: 8px;
-    padding: 1rem 0rem;
-    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
-  }
-  .snacks {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 16px;
-    width: 256px;
-  }
-  .snacks > h1 {
-    font-size: 30px;
-    color: black;
-  }
-  .snacks > p {
-    color: white;
-    font-size: 20px;
-  }
-  
-  .snacks .snack-description {
-      max-width: 180px;
-      height: auto;
-      font-size: 1rem;
-      text-align: center;
-      word-wrap: break-word;
-      max-width: 90%;
-  }
-  
-  .ContainerImgSnack {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fcfcfc;
-    border-radius: 4px;
-    width: 256px;
-    height: 200px;
-  }
-  .ContainerImgSnack > img {
-    width: 232px;
-    height: 170px;
-  }
-  .menuLike {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-  .menuLike > p {
-    font-size: 24px;
-  }
-  .like {
-    display: flex;
-    align-items: center;
-  }
-  .like > a {
-    font-size: 12px;
-    text-decoration: none;
-    color: #e1e1e6;
-  }
-  .link {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-  .like > a > img {
-    width: 18px;
-    height: 16px;
-  }
-  #requestSnack {
-    padding: 4px 40px;
-    background: #00875f;
-    text-decoration: none;
-    text-align: center;
-    color: white;
-    border-radius: 4px;
-    font-weight: bold;
-    transition: 0.3s;
-  }
-  .requestSnackc {
-    padding: 4px 40px;
-    background: #00875f;
-    text-decoration: none;
-    text-align: center;
-    color: white;
-    border-radius: 4px;
-    font-weight: bold;
-    transition: 0.3s;
-  }
-  
-  #requestSnack:hover {
-    background: #08996e;
-  }
-  .requestSnackc:hover {
-    background: #08996e;
-  }
-  
-  .clock {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    height: 88px;
-    width: 335px;
-    background: transparent;
-    border-radius: 4px;
-    box-shadow: 0px 8px 10px #e1e1e6;
-    margin-bottom: 16px;
-  }
-  
-  .clock div {
-    height: 64px;
-    width: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #e1e1e6;
-    background: #323238;
-    box-shadow: 5px, 5px, 5px, #e1e1e6;
-    border-radius: 4px;
-    letter-spacing: 3px;
-  }
-  
-  .clock span {
-    font-weight: bolder;
-    font-size: 32px;
-  }
-  
-  .clock span.time {
-    font-size: 14px;
-  }
-  
-  @media (max-width: 1024px) {
-    .clock {
-      width: 280px;
-    }
-    .clock div {
-      height: 32px;
-      width: 80px;
-    }
-    .clock span {
-      font-size: 14px;
-    }
-    .clock span.time {
-      font-size: 10px;
-    }
-    .ContainerMenu {
-      height: auto;
-      padding: 1.5rem 0rem;
-    }
-    .ContainerMenu > h1 {
-      font-size: 32px;
-    }
-    .ContainerSnack {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-    }
-    .ContainerTwoSnacks {
-      width: 224px;
-      
-    }
-    .snacks {
-      width: 180px;
-    }
-    .snacks > h1 {
-      font-size: 24px;
-    }
-    .snacks > p {
-      font-size: 12px;
-    }
-    #requestSnack {
-      padding: 1rem 2rem;
-      font-size: 1rem;
-      margin-bottom: 8px;
-    }
-    .ContainerImgSnack {
-      width: 180px;
-    }
-    .ContainerImgSnack > img {
-      width: 80%;
-      height: 100px;
-    }
-    .menuLike > p {
-      font-size: 16px;
-    }
-    .link > p {
-      font-size: 10px;
-    }
-  }
-  
-  @media (max-width: 768px){
-  
-    .ContainerTwoSnacks {
-      padding: 1rem;
       width: 100%;
-      height: auto;
-    }
-  
-    .ContainerMenu > h1 {
-      text-align: center;
-    }
-  
-    .ContainerSnack {
-      flex-direction: column;
-      gap: 1rem;
-      width: 90%;
-      align-items: center;
-    }
-  
-    /* .ContainerImgSnack > img {
-      height: 80%;
-    } */
-  
-    .snacks {
-      width: 100%;
-      padding: 1rem;
-      overflow: hidden;
-      word-wrap: break-word;
-    }
-  
-    .snacks h1 {
-      text-align: center;
-    }
-  
-    .snacks .snack-description {
-      height: auto;
-      font-size: 1rem;
-      text-align: center;
-      max-width: 90%;
-    }
-  
-    .ContainerMenu {
-      max-width: 90%;
-      margin: 0 auto;
-      height: 100%;
-      padding: 1rem;
-    }
-  
-    .clock {
-      height: 75px;
-    }
-  
-    .menuLike {
-      width: auto;
-      gap: 2rem;
-    }
-  
   }
-  
-  @media (max-width: 320px){
-    .clock {
-      max-width: 90%;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
-    }
-  }
+}

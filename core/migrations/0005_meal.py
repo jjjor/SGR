@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('meal_type', models.CharField(choices=[('almoço', 'Almoço'), ('janta', 'Janta')], max_length=6)),
                 ('description', models.TextField()),
-                ('image', models.ImageField(upload_to='meals_images/')),
+                ('image', models.ImageField(upload_to='media/')),
             ],
         ),
     ]

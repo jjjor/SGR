@@ -25,5 +25,6 @@ urlpatterns = [
     path('list_meals/', MealListView.as_view(), name='list_meals'),
     path('meal/<int:pk>/edit/', MealUpdateView.as_view(), name='edit_meal'),
     path('meal/<int:pk>/delete/', MealDeleteView.as_view(), name='delete_meal'),
+
 ]
 

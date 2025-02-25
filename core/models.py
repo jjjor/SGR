@@ -43,10 +43,10 @@ class Meal(models.Model):
 
     meal_type = models.CharField(max_length=6, choices=MEAL_CHOICES)
     description = models.TextField()
-    image = models.ImageField(upload_to='meals_images/')
+    image = models.ImageField(upload_to='')
     
-    def __str__(self):
-        return f"{self.get_meal_type_display()} - {self.description[:20]}"
+    # def __str__(self):
+    #     return f"{self.get_meal_type_display()} - {self.description[:20]}"
     
 
 
