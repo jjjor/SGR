@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/list_meals.css' %}">
+
+<h1>Minhas Solicitações</h1>
+
+<table class="styled-table">
+    <thead>
+        <tr>
+            <th>Data</th>
+            <th>Tipo</th>
+            <th>Justificativa</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for meal in meals %}
+        <tr>
+            <td>{{ meal.date|date:"d/m/Y" }}</td>
+            <td>{{ meal.get_meal_type_display }}</td>
+            <td>{{ meal.get_justification_display }}</td>
+            <td>
+                <a href="{% url 'update_meal' meal.pk %}" class="edit-btn">Editar</a>
+                <a href="{% url 'delete_meal' meal.pk %}" class="delete-btn">Cancelar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4" class="empty-message">Nenhuma solicitação encontrada.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
+
+

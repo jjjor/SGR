@@ -1,0 +1,81 @@
+/* Centraliza o conteúdo da página */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupa toda a altura da tela */
+    background-color: #ffff; /* Fundo claro para contraste */
+}
+
+/* Estilização do formulário */
+.form-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Input estilizado */
+.form-content input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Link de registro */
+.form-content a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.form-content a:hover {
+    text-decoration: underline;
+}
+
+/* Botão estilizado */
+.form-content button {
+    background-color: #00875F;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form-content button:hover {
+    background-color: #08996e;
+}
+
+.messages {
+    list-style: none;
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+}
+
+.messages li {
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.messages .error {
+    background-color: #ffcccc;
+    color: #cc0000;
+}
+
+.messages .success {
+    background-color: #ccffcc;
+    color: #009900;
+}

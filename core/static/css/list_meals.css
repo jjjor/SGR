@@ -1,0 +1,81 @@
+/* Centralizar o título */
+h1 {
+    text-align: center; /* Centraliza o título na página */
+    font-size: 24px; /* Ajuste o tamanho da fonte, se necessário */
+    margin-bottom: 20px; /* Adiciona um espaço abaixo do título */
+}
+
+/* Estilização da tabela */
+.styled-table {
+    width: 80%; /* Definindo uma largura maior para centralizar a tabela */
+    margin: 20px auto; /* Centralizando a tabela na página */
+    border-collapse: collapse;
+    text-align: center; /* Centralizando o conteúdo da tabela */
+}
+
+/* Estilização dos cabeçalhos e células */
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+    text-align: center; /* Centralizando o texto nas células */
+}
+
+/* Cabeçalhos */
+.styled-table th {
+    background-color: #00875F;
+    color: white;
+    font-size: 16px;
+}
+
+/* Linhas alternadas */
+.styled-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.styled-table tr:hover {
+    background-color: #dddddd4b;
+    transition: 0.3s;
+}
+
+/* Estilização das células e bordas */
+.styled-table td {
+    border: 1px solid #ddd;
+}
+
+/* Estilização dos links */
+.edit-btn,
+.delete-btn {
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: white;
+}
+
+.edit-btn {
+    background-color: #00875F;
+    transition: 0.3s;
+}
+
+.delete-btn {
+    background-color: #e44236;
+}
+
+/* Efeito de hover para os links */
+.edit-btn:hover {
+    background-color: #08996e;
+}
+
+.delete-btn:hover {
+    background-color: #f07674;
+    transition: 0.3s;
+
+}
+
+/* Mensagem quando não há resultados */
+.empty-message {
+    text-align: center;
+    font-size: 18px;
+    color: #888;
+    padding: 20px;
+    font-style: italic;
+}

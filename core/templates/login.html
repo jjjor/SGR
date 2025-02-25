@@ -1,1 +1,26 @@
-<h1>Login</h1>
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+
+
+<div class="container">
+    <form class="form-content" action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        <h2>Login</h2>
+        <input type="text" placeholder="Usuário..." name="username">
+        <input type="password" placeholder="Senha..." name="password">
+        <a href="{% url 'register' %}">Ainda não é cadastrado?</a>
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
+{% endblock %}

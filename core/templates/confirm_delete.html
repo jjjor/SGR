@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Tem certeza que deseja cancelar esta solicitação?</h1>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirmar</button>
+    <a href="{% url 'list_meals' %}">Cancelar</a>
+</form>
+{% endblock %}

@@ -35,7 +35,7 @@
 
                 {% if user.is_student %}
                     <a href="{% url 'request_meal' %}">Solicitar refeição</a>
-                    <a href="{% url 'my_requests' %}">Minhas solicitações</a>
+                    <a href="{% url 'list_meals' %}">Minhas solicitações</a>
                 {% endif %}
     
                 {% if user.is_holder or user.is_superuser %}
@@ -49,7 +49,7 @@
                 {% endif %}
 
                 <p>Olá, {{ user.username }}</p>
-                <a href=""><img src="{% static 'img/logout.svg' %}" alt="Logout" /></a>
+                <a href="{% url 'logout' %}"><img src="{% static 'img/logout.svg' %}" alt="Logout" /></a>
             {% else %}
             
                 <a href="{% url 'today_menu' %}">Cardápio do dia</a>
@@ -83,7 +83,8 @@
             {% endif %}
             {% if not user.is_anonymous %}
                 <a href="#">Olá, {{ user.username }}</a>
-                <a href=""><img src="{% static 'img/logout.svg' %}" alt="Logout" style="width: 28px"></a>
+                {% csrf_token %}
+                <a href="{% url 'logout' %}"><img src="{% static 'img/logout.svg' %}" alt="Logout" style="width: 28px"></a>
             {% endif %}
         </nav>
     </div>
@@ -118,7 +119,7 @@
         <div class="OptionsFooter">
             <a href="#header">Voltar ao topo</a>
             <div class="ContentImg">
-                <p>Sistema de gerenciamento de refeições do IFRN 2023 &copy;</p>
+                <p>Sistema de gerenciamento de refeições do IFRN 2025 &copy;</p>
             </div>
         </div>
         <div class="OptionsFooter">

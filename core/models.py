@@ -1,47 +1,30 @@
+import os
 from django.db import models
-import uuid
-from django.db import models
-from django.contrib.auth.models import BaseUserManager, AbstractUser
-from django.contrib.auth.models import (AbstractBaseUser,PermissionsMixin)
+from django.contrib.auth.models import  AbstractUser
 from django.conf import settings
 
+def get_file_path(instance, filename):
+    # Define o caminho de upload
+    return os.path.join('uploads/', str(instance.user.id), filename)
 
-def get_file_path(_instance, filename):
-    ext = filename.split('.')[-1]
-    filename = f'{uuid.uuid4()}.{ext}'
-    return f"media/{filename}"
-class Snack(models.Model):
-    type_choices = (
-        ("almoço", "almoço"),
-        ("janta", "janta"),
-    )
-    description = models.TextField("Descrição", max_length=255)
-    likes = models.IntegerField("Curtidas", default=0, null=True, blank=True)
-    image = models.ImageField("Imagem", upload_to=get_file_path, null=True)
-    snack_to_day = models.BooleanField("Refeição do dia", default=False)
-    type = models.CharField("Tipo", max_length=15, choices=type_choices)
-    active = models.BooleanField("Ativo", default=True, null=True, blank=True)
+class MealRequest(models.Model):
+    MEAL_CHOICES = [
+        ('jantar', 'Jantar'),
+        ('almoco', 'Almoço'),
+    ]
 
-    class Meta:
-        verbose_name = "Refeição"
+    JUSTIFICATION_CHOICES = [
+        ('turno_inverso', 'Aula em turno inverso'),
+        ('esporte', 'Práticas esportivas'),
+    ]
 
-class RequestSnack(models.Model):
-    snack_types = Snack.type_choices
-    snack_status = (
-        ("aprovado", "aprovado"),
-        ("reprovado", "reprovado"),
-        ("pendente", "pendente"),
-    )
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    date = models.DateField(auto_now_add=True)
+    meal_type = models.CharField(max_length=10, choices=MEAL_CHOICES)
+    justification = models.CharField(max_length=20, choices=JUSTIFICATION_CHOICES)
 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Usuário", default=1)
-    data = models.DateField("Data")
-    justification = models.TextField("Justificativa", max_length=300)
-    status = models.CharField("Situação", blank=True, null=True, choices=snack_status, default="pendente", max_length=15)
-    type = models.CharField("Tipo", max_length=15, choices=snack_types)
-    checked = models.BooleanField("Verificado", default=False, null=True, blank=True)
-
-    class Meta:
-        verbose_name = "Solicitação de Refeição"
+    def __str__(self):
+        return f"{self.user} - {self.justification} - {self.meal_type}"
 
 
 class CustomUser(AbstractUser):

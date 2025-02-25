@@ -1,20 +1,26 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
+<link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
 
 
+<div class="container">
+    <form class="form-content" action="{% url 'register' %}" method="POST">
+        {% csrf_token %}
+        <h2>Cadastro</h2>
+        <input type="text" placeholder="Usuário..." name="username">
+        <input type="email" placeholder="E-mail..." name="email">
+        <input type="password" placeholder="Senha..." name="password">
+        <button type="submit">Cadastrar-se</button>
+    </form>
+</div>
 
-<form class='form-content' action="{% url 'register' %}" method='POST'>  {% csrf_token %}
-    <input type='text' placeholder='Usuário...', name='username'>
-    <input type='email' placeholder='E-mail...', name='email'>
-    <input type='password' placeholder='Senha...', name='password'>
-    <button type='submit'>Cadastrar-se</button>
-</form>
-
-
-
-
-
-
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
 
 
 

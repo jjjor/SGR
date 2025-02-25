@@ -1,42 +1,19 @@
-{% extends "base.html" %} {% load static %} {% block content %}
-<link rel="stylesheet" href="{% static 'css/request_meal.css' %}" />
+{% extends "base.html" %}
+{% block content %}
 <div class="ContainerRequest">
+    <div class="ContainerContent">
+        <div class="ContainerAlign">
+            <h1>{% if object %}Editar Solicitação{% else %}Solicitar Refeição{% endif %}</h1>
+            <form method="post" class="formulario">
+                {% csrf_token %}
+                {{ form.as_p }}
 
-  <div class="ContainerContent">
-    <div class="ContainerAlign">
-      <img src="{% static 'img/bento.jpg' %}" alt="" />
-      <div class="ContainerTxtRequest">
-        <h1>Solicitar Refeição</h1>
-        <form method="post" class="formulario">
-          {% csrf_token %}
-
-          <label for="data" name="data">Solicitar para o dia:</label>
-          <input type="date" id="dish" name="data" required>
-
-          <label for="type" name="type">Tipo de refeição</label>
-          <select>
-            <option value="jantar">Jantar</option>
-            <option value="almoco">Almoço</option>
-          </select>
-
-          <label for="justification" name="justification"
-            >Justificativa da solicitação:</label
-          >
-          <select>
-            <option value="turno_inverso">Aula em turno inverso</option>
-            <option value="esporte">Práticas esportivas</option>
-          </select>
-          {% if user.is_anonymous %}
-          <a href="{% url 'social:begin' 'suap' %}" id="requestSnack"
-            >Fazer login</a
-          >
-          {% endif %}
-          {% if not user.is_anonymous %}
-          <input type="submit" value="Enviar Solicitação" id="request-button" />
-          {% endif %}
-        </form>
-      </div>
+                <input type="submit" value="Enviar Solicitação" id="request-button" />
+            </form>
+        </div>
     </div>
-  </div>
 </div>
 {% endblock %}
+
+
+
