@@ -1,42 +1,40 @@
-/* Estilo geral para a página */
+
 .ContainerRequest {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #ffffff; /* Cor de fundo suave */
+  background-color: #ffffff;
 }
 
-/* Contêiner que contém o conteúdo */
+
 .ContainerContent {
-  background-color: #fff; /* Fundo branco para o conteúdo */
+  background-color: #fff; 
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
   width: 100%;
-  max-width: 500px; /* Limita a largura do formulário */
+  max-width: 500px;
 }
 
-/* Alinhamento do conteúdo dentro do contêiner */
+
 .ContainerAlign {
   text-align: center;
 }
 
-/* Estilo para o título */
 h1 {
   font-size: 24px;
-  color: #333; /* Cor de texto escura */
+  color: #333; 
   margin-bottom: 20px;
 }
 
-/* Estilo do formulário */
 .formulario {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-/* Estilo dos campos de formulário */
+
 .formulario p {
   text-align: left;
   margin: 0;
@@ -52,9 +50,9 @@ h1 {
   font-size: 16px;
 }
 
-/* Estilo do botão de envio */
+
 #request-button {
-  background-color: #00875F; /* Cor azul */
+  background-color: #00875F; 
   color: white;
   border: none;
   padding: 12px;
@@ -65,10 +63,10 @@ h1 {
 }
 
 #request-button:hover {
-  background-color: #08996e; /* Azul escuro ao passar o mouse */
+  background-color: #08996e; 
 }
 
-/* Ajustes de responsividade */
+
 @media (max-width: 600px) {
   .ContainerRequest {
       padding: 0 15px;
@@ -79,12 +77,12 @@ h1 {
   }
 
   #request-button {
-      font-size: 14px; /* Ajusta o tamanho do botão em telas pequenas */
+      font-size: 14px; 
   }
 }
 
 
-/* Mensagens de sucesso */
+
 .message.success {
   background-color: #d4edda;
   color: #155724;
@@ -94,7 +92,7 @@ h1 {
   margin-bottom: 10px;
 }
 
-/* Mensagens de erro */
+
 .message.error {
   background-color: #f8d7da;
   color: #721c24;
@@ -104,7 +102,7 @@ h1 {
   margin-bottom: 10px;
 }
 
-/* Mensagens informativas */
+
 .message.info {
   background-color: #d1ecf1;
   color: #0c5460;
@@ -114,7 +112,7 @@ h1 {
   margin-bottom: 10px;
 }
 
-/* Mensagens de alerta */
+
 .message.warning {
   background-color: #fff3cd;
   color: #856404;
@@ -125,7 +123,7 @@ h1 {
 }
 
 ul {
-  list-style-type: none; /* Remove os marcadores da lista */
-  padding: 0; /* Remove o padding */
-  margin: 0; /* Remove a margem */
+  list-style-type: none; 
+  padding: 0; 
+  margin: 0; 
 }

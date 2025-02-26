@@ -41,7 +41,6 @@
                                 <td>
                                     <input type="hidden" name="meal_ids" value="{{ meal.id }}">
 
-                                    <!-- Verifica se o usuário atual é o solicitante. Se for, desabilita a seleção -->
                                     {% if meal.user == user %}
                                         <select name="status" disabled>
                                             <option value="pendente" {% if meal.status == 'pendente' %}selected{% endif %}>Pendente</option>
