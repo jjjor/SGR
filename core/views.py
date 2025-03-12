@@ -65,11 +65,14 @@ class TodayMealView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
+        
         lunchs = Meal.objects.filter(meal_type='lunch')
         dinners = Meal.objects.filter(meal_type='dinner')
+        week_days = ["Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira"]
 
         context['lunch'] = lunchs
         context['dinner'] = dinners
+        context['week_days'] = week_days
 
         return context
     

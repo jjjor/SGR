@@ -1,6 +1,45 @@
 .select-dish {
     padding: 2rem 0;
   }
+
+  table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  thead {
+    background-color: #00875F;
+    color: white;
+    text-align: left;
+  }
+  
+  thead th {
+    padding: 12px;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  tbody td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  td img {
+    max-width: 100px;
+    border-radius: 5px;
+  }
+  
+  tbody tr:hover {
+    background-color: #ddd;
+  }
+  
   
   .select-dish-container {
     background-color: white;
@@ -166,6 +205,8 @@
     .description-text {
       word-wrap: break-word;
     }
+
+    
   
   }
   

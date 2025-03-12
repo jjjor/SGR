@@ -46,7 +46,7 @@ class Meal(models.Model):
     image = models.ImageField(upload_to='')
     
     # def __str__(self):
-    #     return f"{self.get_meal_type_display()} - {self.description[:20]}"
+    #     return f"{self.get_meal_type_display()} - {self.day}"
     
 
 

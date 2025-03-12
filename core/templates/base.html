@@ -36,6 +36,7 @@
                 {% if user.is_student or user.is_holder %}
                     <a href="{% url 'request_meal' %}">Solicitar refeição</a>
                     <a href="{% url 'my_requests' %}">Minhas solicitações</a>
+                    <a href="{% url 'today_meal'%}">Refeições da semana</a>
                 {% endif %}
     
                 {% if user.is_holder or user.is_superuser %}
@@ -44,7 +45,7 @@
 
                 {% if user.is_superuser %}
                 <a href="{% url 'create_meal' %}">Cadastrar refeições</a>
-                <a href="{% url 'today_meal'%}">Refeições do dia</a>
+                <a href="{% url 'today_meal'%}">Refeições da semana</a>
                 <a href="{% url 'list_meals' %}">Lista de refeições</a>
                 {% endif %}
 
@@ -53,6 +54,7 @@
                 {% else %}
             
                 <a href="{% url 'today_menu' %}">Cardápio do dia</a>
+                <a href="{% url 'today_meal'%}">Refeições da semana</a>
                 <a class="btnLogin" href="{% url 'login' %}">Login</a>
             {% endif %}
         </nav>
@@ -92,13 +94,38 @@
     <!-- Main Content -->
     {% block content %}
     <div class="mainblock" name="mainblock">
+        <br>
         <img src="{% static 'img/woman.png' %}" alt="imgHome" style="width: 350px" class="imgHome">
         Sistema de Gerenciamento de Refeições
         <p>
             Seja bem-vindo(a) ao Sistema de Gerenciamento de Refeições do IFRN.
         </p>
+        <br>
 
-        <div>
+        Navegue em nosso site:
+        <div class='nav'>
+            <a href=" {% url 'today_menu' %} "><button>Cardápio do dia</button></a>
+            {% if user.is_superuser %}
+                <a href=" {% url 'meal_requests' %} "><button>Analisar Solicitações</button></a>
+                <a href=" {% url 'create_meal' %} "><button>Criar refeições</button></a>
+                <a href=" {% url 'today_menu' %} "><button>Refeições da semana</button></a>
+                <a href=" {% url 'list_meals' %} "><button>Lista de refeições</button></a>
+            {% endif %}
+
+            {% if user.is_anonymous %}
+                <a href=" {% url 'today_meal' %} "><button>Refeições da semana</button></a>
+            {%endif%}
+
+            {% if user.is_student %}
+                <a href=" {% url 'request_meal' %} "><button>Solicitar refeição</button></a>
+                <a href=" {% url 'my_requests' %} "><button>Minhas solicitações</button></a>
+                <a href=" {% url 'today_meal' %} "><button>Refeições da semana</button></a>
+            {%endif%}
+
+        </div>
+        
+
+        <div class='resources'>
             Principais recursos: <br>
             <p>
             - Cardápio diário: Confira o cardápio atualizado regularmente. <br>

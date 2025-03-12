@@ -6,42 +6,37 @@
 
   <div class="select-dish">
     <div class="select-dish-container">
-      <h1>Refeições do dia</h1>
-      <div class="registered-dish">
-        <h2>Almoços disponíveis</h2>
-        <div class="registered-dish-container">
-          {% for meal in lunch %}
-            <div class="card-dish">
-              <img src="{{ meal.image.url }}" alt="Imagem do prato" />
-              <div class="description">
-                <p class="description-title">Descrição:</p>
-                <p class="description-text">{{ meal.description }}</p>
-              </div>
-              
-            </div>
-          {% empty %}
-            <p>Nenhum almoço cadastrado.</p>
-          {% endfor %}
-        </div>
-      </div>
-
-      <div class="registered-dish">
-        <h2>Jantares disponíveis</h2>
-        <div class="registered-dish-container">
-          {% for meal in dinner %}
-            <div class="card-dish">
-              <img src="{{ meal.image.url }}" alt="Imagem do prato" />
-              <div class="description">
-                <p class="description-title">Descrição:</p>
-                <p class="description-text">{{ meal.description }}</p>
-              </div>
-              
-            </div>
-          {% empty %}
-            <p>Nenhuma janta cadastrada.</p>
-          {% endfor %}
-        </div>
-      </div>
+      <h1>Refeições da semana</h1>
+      <table border="1">
+        <thead>
+          <tr>
+            {% for day in week_days %}
+              <th>{{ day }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {% for day in week_days %}
+              <td>
+                <strong>Almoço</strong><br>
+                {% for meal in lunch %}
+                  <p>{{ meal.description }}</p>
+                {% empty %}
+                  <p>Nenhum almoço cadastrado.</p>
+                {% endfor %}
+                <hr>
+                <strong>Jantar</strong><br>
+                {% for meal in dinner %}
+                  <p>{{ meal.description }}</p>
+                {% empty %}
+                  <p>Nenhuma janta cadastrada.</p>
+                {% endfor %}
+              </td>
+            {% endfor %}
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 {% endblock %}

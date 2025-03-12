@@ -63,6 +63,7 @@
   .formCreateMeal button:hover {
     cursor: pointer;
     background: #00b37e;
+    transition: 0.3s;
   }
   .check {
     display: flex;
